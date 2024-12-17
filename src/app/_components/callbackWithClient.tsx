@@ -2,7 +2,7 @@
 
 import { useStyle } from "./utils/useStyle";
 
-export default function CallbackWithClient({
+export default function WithOutClient({
   count,
   setCount,
 }: {

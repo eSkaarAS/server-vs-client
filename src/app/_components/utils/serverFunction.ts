@@ -3,6 +3,7 @@
 import { api } from "@/trpc/server";
 
 export async function serverFunction() {
+  console.log("Hello on server!");
   return "Hello from server!";
 }
 

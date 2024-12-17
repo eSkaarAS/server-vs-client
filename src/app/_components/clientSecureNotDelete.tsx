@@ -8,7 +8,7 @@ export default function clientSecureNotDelete() {
 
   return (
     <div className="h-20 w-11/12 bg-red-950" style={isServerStyle}>
-      <p>Server Component</p>
+      <p>Client Component</p>
       {data?.map((item) => (
         <button key={item.id} onClick={() => deleteUser(1)}>
           {item.name}
