@@ -40,6 +40,11 @@ export default async function Home() {
         <ClientPostsPrefetch />
       </HydrateClient> */}
       {/* <ClientCreatePostInvalidate /> */}
+      {/* <ServerSecure /> */}
+      {/* <ServerSecureNot /> */}
+
+      {/* REMEMBER TO TOGGLE PROTECTEDPROCEDURE AUTH */}
+      {/* <ClientSecureNotDelete /> */}
     </main>
   );
 }

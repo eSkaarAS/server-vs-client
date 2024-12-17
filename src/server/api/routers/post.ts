@@ -1,6 +1,10 @@
 import { z } from "zod";
 
-import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
+import {
+  createTRPCRouter,
+  protectedProcedure,
+  publicProcedure,
+} from "@/server/api/trpc";
 
 export const postRouter = createTRPCRouter({
   hello: publicProcedure
@@ -35,4 +39,20 @@ export const postRouter = createTRPCRouter({
 
     return post ?? null;
   }),
+  getAllProtected: protectedProcedure.query(async ({ ctx }) => {
+    const post = await ctx.db.post.findMany({
+      orderBy: { createdAt: "desc" },
+    });
+
+    return post ?? null;
+  }),
+  deleteUser: protectedProcedure
+    .input(z.object({ userId: z.number() }))
+    .mutation(async ({ ctx, input }) => {
+      return await ctx.db.post.delete({
+        where: {
+          id: input.userId,
+        },
+      });
+    }),
 });
