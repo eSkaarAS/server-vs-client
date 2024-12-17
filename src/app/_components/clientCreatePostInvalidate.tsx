@@ -2,8 +2,9 @@
 
 import { api } from "@/trpc/react";
 import { useState } from "react";
+import { isServerStyle } from "./utils/isServerComponent";
 
-export function LatestPost() {
+export function ClientCreatePostInvalidate() {
   const [latestPost] = api.post.getLatest.useSuspenseQuery();
 
   const utils = api.useUtils();
@@ -16,7 +17,7 @@ export function LatestPost() {
   });
 
   return (
-    <div className="w-full max-w-xs">
+    <div className="w-11/12 bg-red-950" style={isServerStyle}>
       {latestPost ? (
         <p className="truncate">Your most recent post: {latestPost.name}</p>
       ) : (
